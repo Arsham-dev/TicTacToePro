@@ -17,12 +17,13 @@ private:
     std::string showUpperNode(std::vector<Node> node);
 
 public:
-    Table(int length);
+    explicit Table(int length);
 
     void setNode(Type type, Size size, int x, int y);
 
     void print();
 
+    std::string checkGameIsEnd();
 };
 
 

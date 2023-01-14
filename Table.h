@@ -7,15 +7,21 @@
 
 #include "Node.h"
 #include <vector>
+#include <string>
 
 class Table {
 private:
     std::vector<Node> *nodes;
     int length;
+
+    std::string showUpperNode(std::vector<Node> node);
+
 public:
     Table(int length);
 
     void setNode(Type type, Size size, int x, int y);
+
+    void print();
 
 };
 

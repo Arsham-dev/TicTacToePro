@@ -1,18 +1,15 @@
 #include <iostream>
 #include "Table.h"
 #include "Node.h"
+#include "User.h"
 
 using namespace std;
 
 
 int main() {
+    auto table = Table(9);
+    auto user1 = new User(Type::Blue, table);
+    auto user2 = new User(Type::Red, table);
 
-    auto table = new Table(9);
-
-    table->setNode(Type::Blue, Size::Small, 2, 1);
-    table->setNode(Type::Blue, Size::Small, 2, 2);
-    table->setNode(Type::Blue, Size::Small, 2, 3);
-    table->print();
-    table->checkGameIsEnd();
     return 0;
 }

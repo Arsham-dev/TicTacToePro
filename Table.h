@@ -16,7 +16,8 @@ private:
 
     std::string showUpperNode(std::vector<Node> node);
 
-    bool checkNodeIncludes(const std::vector<Node>& vNodes,Node node);
+    bool checkNodeIncludes(const std::vector<Node> &vNodes, Node node);
+
 public:
     explicit Table(int length);
 

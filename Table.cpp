@@ -32,6 +32,7 @@ void Table::print() {
         }
         cout << "|" << endl;
     }
+    cout << endl;
 }
 
 std::string Table::showUpperNode(std::vector<Node> node) {

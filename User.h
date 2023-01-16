@@ -18,6 +18,8 @@ private:
 
     void setNode(Size size, int x, int y);
 
+    void moveNode(Size size, int pastX, int pastY, int x, int y);
+
 public:
     User(Type type, Table &table);
 
@@ -26,6 +28,14 @@ public:
     void setMediumNode(int x, int y);
 
     void setSmallNode(int x, int y);
+
+    void moveLargeNode(int pastX, int pastY, int x, int y);
+
+    void moveMediumNode(int pastX, int pastY, int x, int y);
+
+    void moveSmallNode(int pastX, int pastY, int x, int y);
+
+
 };
 
 

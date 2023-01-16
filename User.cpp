@@ -47,3 +47,19 @@ void User::setSmallNode(int x, int y) {
     }
 
 }
+
+void User::moveNode(Size size, int pastX, int pastY, int x, int y) {
+    this->table->moveNode(this->type, size, pastX, pastY, x, y);
+}
+
+void User::moveLargeNode(int pastX, int pastY, int x, int y) {
+    moveNode(Size::Large, pastX, pastY, x, y);
+}
+
+void User::moveMediumNode(int pastX, int pastY, int x, int y) {
+    moveNode(Size::Medium, pastX, pastY, x, y);
+}
+
+void User::moveSmallNode(int pastX, int pastY, int x, int y) {
+    moveNode(Size::Small, pastX, pastY, x, y);
+}

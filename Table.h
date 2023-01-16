@@ -16,10 +16,13 @@ private:
 
     std::string showUpperNode(std::vector<Node> node);
 
+    bool checkNodeIncludes(const std::vector<Node>& vNodes,Node node);
 public:
     explicit Table(int length);
 
     void setNode(Type type, Size size, int x, int y);
+
+    void moveNode(Type type, Size size, int pastX, int pastY, int x, int y);
 
     void print();
 

@@ -66,5 +66,37 @@ std::string Table::checkGameIsEnd() {
         return "B";
 }
 
+bool Table::checkNodeIncludes(const std::vector<Node> &vNodes, Node node) {
+    bool ans = false;
+    for (auto vNode: vNodes) {
+        if (vNode.size == node.size && vNode.type == node.type) {
+            ans = true;
+            break;
+        }
+    }
+    return ans;
+}
+
+void Table::moveNode(Type type, Size size, int pastX, int pastY, int x, int y) {
+    auto node = this->nodes[(pastX - 1) * 3 + pastY];
+
+    const auto newNode = Node{type, size};
+
+    const auto isExist = checkNodeIncludes(node, newNode);
+
+    if (!isExist) {
+        return;
+    }
+
+    for (int i = 0; i < node.size(); ++i)
+        if (node[i].size == size && node[i].type == type)
+            node.erase(node.cbegin() + i);
+
+    node = this->nodes[(x - 1) * 3 + y];
+    node.push_back(newNode);
+}
+
+
+
 
 

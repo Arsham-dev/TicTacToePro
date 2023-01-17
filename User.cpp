@@ -2,12 +2,16 @@
 // Created by Mehr-systeM on 1/17/2023.
 //
 
+#include <iostream>
 #include "User.h"
 
 
 void User::setNode(Size size, int x, int y) {
-    table->setNode(this->type, size, x, y);
     this->table->print();
+    const auto isEnded = this->table->checkGameIsEnd();
+    if (isEnded == "R" || isEnded == "B") {
+        std::cout << isEnded << " Is Winner" << std::endl;
+    }
 }
 
 User::User(Type type, Table &table) {
@@ -18,38 +22,47 @@ User::User(Type type, Table &table) {
     this->table = &table;
 }
 
-void User::setLargeNode(int x, int y) {
+bool User::setLargeNode(int x, int y) {
     if (this->numberOfLarge > 0) {
         setNode(Size::Large, x, y);
         this->numberOfLarge--;
+        return true;
     } else {
-
+        return false;
     }
 
 }
 
-void User::setMediumNode(int x, int y) {
+bool User::setMediumNode(int x, int y) {
     if (this->numberOfMedium > 0) {
         setNode(Size::Medium, x, y);
         this->numberOfMedium--;
+        return true;
     } else {
-
+        return false;
     }
 
 }
 
-void User::setSmallNode(int x, int y) {
+bool User::setSmallNode(int x, int y) {
     if (this->numberOfSmall > 0) {
         setNode(Size::Small, x, y);
         this->numberOfSmall--;
+        return true;
     } else {
-
+        return false;
     }
 
 }
 
 void User::moveNode(Size size, int pastX, int pastY, int x, int y) {
     this->table->moveNode(this->type, size, pastX, pastY, x, y);
+    this->table->print();
+
+    const auto isEnded = this->table->checkGameIsEnd();
+    if (isEnded == "R" || isEnded == "B") {
+        std::cout << isEnded << " Is Winner" << std::endl;
+    }
 }
 
 void User::moveLargeNode(int pastX, int pastY, int x, int y) {

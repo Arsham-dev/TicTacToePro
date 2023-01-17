@@ -23,11 +23,11 @@ private:
 public:
     User(Type type, Table &table);
 
-    void setLargeNode(int x, int y);
+    bool setLargeNode(int x, int y);
 
-    void setMediumNode(int x, int y);
+    bool setMediumNode(int x, int y);
 
-    void setSmallNode(int x, int y);
+    bool setSmallNode(int x, int y);
 
     void moveLargeNode(int pastX, int pastY, int x, int y);
 

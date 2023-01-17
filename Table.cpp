@@ -53,7 +53,7 @@ std::string Table::showUpperNode(std::vector<Node> node) {
 }
 
 std::string Table::checkGameIsEnd() {
-    string status = "";
+    string status = " ";
     for (int i = 0; i < this->length; ++i) {
         status += showUpperNode(this->nodes[i]).substr(0, 1);
     }
@@ -65,6 +65,8 @@ std::string Table::checkGameIsEnd() {
              status.substr(3, 3) == "BBB" ||
              status.substr(6, 3) == "BBB")
         return "B";
+
+    return status;
 }
 
 bool Table::checkNodeIncludes(const std::vector<Node> &vNodes, Node node) {

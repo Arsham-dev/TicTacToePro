@@ -33,9 +33,15 @@ string getCommand() {
             int y = getLocation(false);
             return to_string(sizeOfNode) + " " + to_string(x) + " " + to_string(y);
         } else if (firstCommand == "2") {
-            string secondCommand;
-            cin >> secondCommand;
-            return secondCommand;
+            int sizeOfNode = getSizeOfNode();
+            cout << "First enter current node location" << endl;
+            int xPast = getLocation(true);
+            int yPast = getLocation(false);
+            cout << "Now enter new location" << endl;
+            int x = getLocation(true);
+            int y = getLocation(true);
+            return to_string(sizeOfNode) + " " + to_string(xPast) + " " + to_string(yPast)
+                   + to_string(x) + " " + to_string(y);;
         } else {
             cout << "Please Enter an valid Command\n1-Set Node\n2-Move Node\n";
         }

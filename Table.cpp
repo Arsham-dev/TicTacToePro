@@ -80,23 +80,27 @@ bool Table::checkNodeIncludes(const std::vector<Node> &vNodes, Node node) {
     return ans;
 }
 
-void Table::moveNode(Type type, Size size, int pastX, int pastY, int x, int y) {
-    auto node = this->nodes[(pastX - 1) * 3 + pastY];
+bool Table::moveNode(Type type, Size size, int pastX, int pastY, int x, int y) {
+    auto node = this->nodes[(pastX - 1) * 3 + pastY - 1];
 
     const auto newNode = Node{type, size};
 
     const auto isExist = checkNodeIncludes(node, newNode);
 
     if (!isExist) {
-        return;
+        return false;
     }
 
     for (int i = 0; i < node.size(); ++i)
-        if (node[i].size == size && node[i].type == type)
-            node.erase(node.cbegin() + i);
+        if (node[i].size == size && node[i].type == type) {
+            this->nodes[(pastX - 1) * 3 + pastY - 1].
+                    erase(nodes[(pastX - 1) * 3 + pastY - 1].cbegin() + i);
+            break;
+        }
 
-    node = this->nodes[(x - 1) * 3 + y];
-    node.push_back(newNode);
+    this->nodes[(x - 1) * 3 + y - 1].push_back(newNode);
+
+    return true;
 }
 
 

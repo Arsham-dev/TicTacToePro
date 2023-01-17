@@ -18,10 +18,10 @@ private:
 
     void setNode(Size size, int x, int y);
 
-    void moveNode(Size size, int pastX, int pastY, int x, int y);
+    bool moveNode(Size size, int pastX, int pastY, int x, int y);
 
 public:
-    User(Type type, Table &table);
+    User(Type type, Table *&table);
 
     bool setLargeNode(int x, int y);
 
@@ -29,11 +29,13 @@ public:
 
     bool setSmallNode(int x, int y);
 
-    void moveLargeNode(int pastX, int pastY, int x, int y);
+    bool moveLargeNode(int pastX, int pastY, int x, int y);
 
-    void moveMediumNode(int pastX, int pastY, int x, int y);
+    bool moveMediumNode(int pastX, int pastY, int x, int y);
 
-    void moveSmallNode(int pastX, int pastY, int x, int y);
+    bool moveSmallNode(int pastX, int pastY, int x, int y);
+
+    void print();
 
 
 };

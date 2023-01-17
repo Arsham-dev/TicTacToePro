@@ -23,7 +23,7 @@ public:
 
     void setNode(Type type, Size size, int x, int y);
 
-    void moveNode(Type type, Size size, int pastX, int pastY, int x, int y);
+    bool moveNode(Type type, Size size, int pastX, int pastY, int x, int y);
 
     void print();
 

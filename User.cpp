@@ -7,19 +7,16 @@
 
 
 void User::setNode(Size size, int x, int y) {
-    this->table->print();
-    const auto isEnded = this->table->checkGameIsEnd();
-    if (isEnded == "R" || isEnded == "B") {
-        std::cout << isEnded << " Is Winner" << std::endl;
-    }
+    this->table->setNode(this->type,size,x,y);
+
 }
 
-User::User(Type type, Table &table) {
+User::User(Type type, Table *&table) {
     this->numberOfLarge = 2;
     this->numberOfMedium = 2;
     this->numberOfSmall = 2;
     this->type = type;
-    this->table = &table;
+    this->table = table;
 }
 
 bool User::setLargeNode(int x, int y) {
@@ -46,7 +43,7 @@ bool User::setMediumNode(int x, int y) {
 
 bool User::setSmallNode(int x, int y) {
     if (this->numberOfSmall > 0) {
-        setNode(Size::Small, x, y);
+        this->setNode(Size::Small, x, y);
         this->numberOfSmall--;
         return true;
     } else {
@@ -55,24 +52,23 @@ bool User::setSmallNode(int x, int y) {
 
 }
 
-void User::moveNode(Size size, int pastX, int pastY, int x, int y) {
-    this->table->moveNode(this->type, size, pastX, pastY, x, y);
+bool User::moveNode(Size size, int pastX, int pastY, int x, int y) {
+    return this->table->moveNode(this->type, size, pastX, pastY, x, y);
+
+}
+
+bool User::moveLargeNode(int pastX, int pastY, int x, int y) {
+    return moveNode(Size::Large, pastX, pastY, x, y);
+}
+
+bool User::moveMediumNode(int pastX, int pastY, int x, int y) {
+    return moveNode(Size::Medium, pastX, pastY, x, y);
+}
+
+bool User::moveSmallNode(int pastX, int pastY, int x, int y) {
+    return moveNode(Size::Small, pastX, pastY, x, y);
+}
+
+void User::print() {
     this->table->print();
-
-    const auto isEnded = this->table->checkGameIsEnd();
-    if (isEnded == "R" || isEnded == "B") {
-        std::cout << isEnded << " Is Winner" << std::endl;
-    }
-}
-
-void User::moveLargeNode(int pastX, int pastY, int x, int y) {
-    moveNode(Size::Large, pastX, pastY, x, y);
-}
-
-void User::moveMediumNode(int pastX, int pastY, int x, int y) {
-    moveNode(Size::Medium, pastX, pastY, x, y);
-}
-
-void User::moveSmallNode(int pastX, int pastY, int x, int y) {
-    moveNode(Size::Small, pastX, pastY, x, y);
 }

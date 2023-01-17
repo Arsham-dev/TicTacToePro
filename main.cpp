@@ -32,7 +32,11 @@ int main() {
         user1->print();
         string checkResult = table->checkGameIsEnd();
         if (checkResult == "B" || checkResult == "R") {
-            cout << checkResult;
+            if (checkResult == "B")
+                cout << "Blue player is winner";
+            else {
+                cout << "Red player is winner";
+            }
             break;
         }
 
@@ -49,7 +53,11 @@ int main() {
         user2->print();
         checkResult = table->checkGameIsEnd();
         if (checkResult == "B" || checkResult == "R") {
-            cout << checkResult;
+            if (checkResult == "B")
+                cout << "Blue player is winner";
+            else {
+                cout << "Red player is winner";
+            }
             break;
         }
     }
